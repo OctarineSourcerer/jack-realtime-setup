@@ -32,3 +32,5 @@ else
 	touch "$filetoedit"
 	echo "$filecontents" | tee -a $filetoedit
 fi
+
+echo "You'll have to log in and out before these changes take effect. Have a lovely day! <3"
