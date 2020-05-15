@@ -6,10 +6,12 @@ currentuser=$(id -u -n)
 filecontents="@${groupname}   -  rtprio     95
 @${groupname}   -  memlock    unlimited"
 
-# Does the group exist? If not, create it and add the current user
+# Does the group exist? If not, create it
 getent group $groupname \
  || echo "Creating ${groupname} group and adding ${currentuser} to it" \
- && groupadd $groupname && useradd -G $groupname $currentuser
+ && groupadd $groupname
+ 
+ useradd -G $groupname $currentuser
 
 # Choose which file to edit, depending on whether there's a /etc/security/limits.d dir
 if [[ -d "/etc/security/limits.d" ]]
